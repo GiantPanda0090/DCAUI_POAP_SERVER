@@ -1,7 +1,7 @@
 # DCAUI_POAP_SERVER  
 Practice POAP Server for Cisco Automating Data Center Solutions. Inspired by Cisco DCAUTI CDLL Training.  
-The Original code from Cisco CDLL is written in Python. Since Elixir are more efficient at message passing and multithreading, theoretically Elixir should be more suitable for POAP Server.  
-The purpose of this code base is to test the difference when running the POAP server in Python and Elixir.     
+The Original code from Cisco CDLL is written in Python. Since Elixir are more efficient at message passing and multithreading, theoretically Elixir should be more suitable for POAP Server. In original Python script, the author use Jinja2 as templet language. In this project, we use Elixir EEx - Embedded Elixir.   
+The purpose of this code base is to test the difference when running the POAP server in Python and Elixir. For example, efficiency, stability and code complexity.     
 The code is based on Elixir Pheonix.  
   
 ## External Resource
