@@ -6,7 +6,8 @@ The code is based on Elixir Pheonix.
   
 ## External Resource
 Nexus POAP Script From Cisco  
-The POAP script can be found at https://github.com/datacenter/nexus9000/blob/master/nx-os/poap/poap.py.  
+The POAP script can be found at  
+ https://github.com/datacenter/nexus9000/blob/master/nx-os/poap/poap.py.  
 
 Cisco Nexus 9000 Series NX-OS Fundamentals Configuration Guide, Release 7.x  
 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/fundamentals/configuration/guide/b_Cisco_Nexus_9000_Series_NX-OS_Fundamentals_Configuration_Guide_7x/b_Cisco_Nexus_9000_Series_NX-OS_Fundamentals_Configuration_Guide_7x_chapter_0100.html  
