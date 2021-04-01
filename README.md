@@ -3,6 +3,18 @@ Practice POAP Server for Cisco Automating Data Center Solutions. Inspired by Cis
 The Original code from Cisco CDLL is written in Python. Since Elixir are more efficient at message passing and multithreading, theoretically Elixir should be more suitable for POAP Server. In original Python script, the author use Jinja2 as templet language. In this project, we use Elixir EEx - Embedded Elixir.   
 The purpose of this code base is to test the difference when running the POAP server in Python and Elixir. For example, efficiency, stability and code complexity.     
 The code is based on Elixir Pheonix.  
+
+## Current Function Supported
+* Pull config with http request with EEx dynamic config adjustent. For example, dynamic mgmt0 IP address allocation from yaml file.   
+* Pull NXOS image with md5 file with http request  
+* Pull the element above with Cisco POAP Script for NXOS  
+
+## Variables and Resources
+Most of the mandatory Resources is under `assets/static` folder.  
+ * nxos_fw -> NXOS system software. For example: nxos.7.0.3.I7.9.bin.
+ * tempates -> configuration EEx templets. In the old python code, this is written in Jinja2. 
+ * podvars.yml -> Configuration parameter that will be used to fill into the EEx templets.   `pod` is the Global Network Variable and `switches` is the the Local Switch Variable per Device.  
+ * config_gen -> the config that will be generated before stream to the end device. This folder does not auto clean function at moment which means it does not follow the EU GDPR Regulations. 
   
 ## External Resource
 Nexus POAP Script From Cisco  
