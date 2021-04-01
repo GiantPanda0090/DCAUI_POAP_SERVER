@@ -1,0 +1,17 @@
+---
+
+pod:
+  net: 192.168.0.0
+  mask: 255.255.255.0
+  router: 192.168.0.1
+  tftp_server: 192.168.46.130
+  http_server: 192.168.46.130:5000
+  protocol: http
+  port: 80
+
+switches:
+  - s_no: 9EZ8IGDBM5S
+    details:
+      hostname: N9K1
+      mgmt0_ip: 192.168.46.129/24
+      mac_address: 00:0C:29:C8:93:7F
