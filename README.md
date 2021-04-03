@@ -81,7 +81,7 @@ https://github.com/GiantPanda0090/DCAUI_ToolSet
  * Mix 1.11.2 (compiled with Erlang/OTP 23)
 
 ## Installation Method
-Phoenix installation:
+Phoenix installation:  
 https://hexdocs.pm/phoenix/installation.html  
 To start your Phoenix server:  
 
