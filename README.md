@@ -15,6 +15,9 @@ Most of the mandatory Resources is under `assets/static` folder.
  * tempates -> configuration EEx templets. In the old python code, this is written in Jinja2. 
  * podvars.yml -> Configuration parameter that will be used to fill into the EEx templets.   `pod` is the Global Network Variable and `switches` is the the Local Switch Variable per Device.  
  * config_gen -> the config that will be generated before stream to the end device. This folder does not auto clean function at moment which means it does not follow the EU GDPR Regulations. 
+
+ ## Main Controller
+ `/lib/poap_server_web/controllers/page_controller.ex`
   
 ## External Resource
 Nexus POAP Script From Cisco  
@@ -51,7 +54,7 @@ OR
 With Nexus9000v.   
 Sample testbed connectivity
 ```
-Nexus 9000v <-> Ubuntu9000 (serial connection: minicom ttyS1, Management: Virtual Network Mgmt,  Data: Virtual Network Data)
+Nexus 9000v <-(serial connection: minicom ttyS1, Management: Virtual Network Mgmt,  Data: Virtual Network Data) -> Ubuntu 
 ```
 
 ## Sample output for HTTP Config pull
@@ -72,7 +75,14 @@ conf.9EZ8IGDBM5S.1                           100%[==============================
 ## Main Repositiory
 https://github.com/GiantPanda0090/DCAUI_ToolSet
 
+## Development/Test Enviorment
+ * Erlang/OTP 23
+ * Elixir (1.11.2)
+ * Mix 1.11.2 (compiled with Erlang/OTP 23)
+
 ## Installation Method
+Phoenix installation:
+https://hexdocs.pm/phoenix/installation.html  
 To start your Phoenix server:  
 
   * Install dependencies with `mix deps.get`  
