@@ -1,20 +1,41 @@
 # DCAUI_POAP_SERVER  
-Practice POAP Server for Cisco Automating Data Center Solutions. Inspired by Cisco DCAUTI CDLL Training.  
+Practice POAP/After Power on Auto Provisioning Server for Cisco Automating Data Center Solutions. Inspired by Cisco DCAUTI CDLL Training.  
 The Original code from Cisco CDLL is written in Python. Since Elixir are more efficient at message passing and multithreading, theoretically Elixir should be more suitable for POAP Server. In original Python script, the author use Jinja2 as templet language. In this project, we use Elixir EEx - Embedded Elixir.   
 The purpose of this code base is to test the difference when running the POAP server in Python and Elixir. For example, efficiency, stability and code complexity.     
 The code is based on Elixir Pheonix.  
 
 ## Current Function Supported
-* Pull config with http request with EEx dynamic config adjustent. For example, dynamic mgmt0 IP address allocation from yaml file.   
-* Pull NXOS image with md5 file with http request  
+* Pull config with http request with EEx dynamic config adjustent. For example, dynamic mgmt0 IP address allocation from yaml file. - API: `/conf.<SN> `
+* Pull NXOS image with md5 file with http request  - API: `/nxos.<version> `
 * Pull the element above with Cisco POAP Script for NXOS  
+* After power on auto provisioning from guestshell - API: `/onbox_streamer ` (NEW!!)
+
+## Sample use case
+* Pull Config   
+On Nexus:  
+```
+[admin@guestshell ~]$ curl 172.26.138.181:4000/conf.9EZ8IGDBM5
+```
+* After power on auto provisioning from guestshell   
+On Nexus:  
+```
+N9K1(config-if)# run guestshell  
+[admin@guestshell ~]$ curl 172.26.138.181:4000/onbox_streamer > onbox_streamer.py  
+[admin@guestshell ~]$ python onbox_streamer.py 172.26.138.181 4000
+```  
+* Retrive NXOS Firmware   
+On Nexus:  
+```
+[admin@guestshell ~]$ curl 172.26.138.181:4000/nxos.7.0.3.I7.9.bin
+```
 
 ## Variables and Resources
-Most of the mandatory Resources is under `assets/static` folder.  
+Most of the mandatory Resources is under `assets/static` folder. Please modify it beforehand.     
  * nxos_fw -> NXOS system software. For example: nxos.7.0.3.I7.9.bin.
  * tempates -> configuration EEx templets. In the old python code, this is written in Jinja2. 
  * podvars.yml -> Configuration parameter that will be used to fill into the EEx templets.   `pod` is the Global Network Variable and `switches` is the the Local Switch Variable per Device.  
  * config_gen -> the config that will be generated before stream to the end device. This folder does not auto clean function at moment which means it does not follow the EU GDPR Regulations. 
+ * onbox_streamer -> Retreive onbox streamer script from the server. This is used for after power on provisioning from guestshell
 
  ## Main Controller
  `/lib/poap_server_web/controllers/page_controller.ex`
@@ -57,20 +78,6 @@ Sample testbed connectivity
 Nexus 9000v <-(serial connection: minicom ttyS1, Management: Virtual Network Mgmt,  Data: Virtual Network Data) -> Ubuntu 
 ```
 
-## Sample output for HTTP Config pull
-```  
-$ wget http://localhost:4000/conf.9EZ8IGDBM5S  
---2021-04-01 21:42:45--  http://localhost:4000/conf.9EZ8IGDBM5S  
-Resolving localhost (localhost)... 127.0.0.1  
-Connecting to localhost (localhost)|127.0.0.1|:4000... connected.  
-HTTP request sent, awaiting response... 200 OK  
-Length: 2160 (2.1K) [application/octet-stream]  
-Saving to: ‘conf.9EZ8IGDBM5S.1’  
-  
-conf.9EZ8IGDBM5S.1                           100%[===========================================================================================>]   2.11K  --.-KB/s      in   0.001s    
-
-2021-04-01 21:42:47 (2.65 MB/s) - ‘conf.9EZ8IGDBM5S.1’ saved [2160/2160]  
-```
 
 ## Main Repositiory
 https://github.com/GiantPanda0090/DCAUI_ToolSet

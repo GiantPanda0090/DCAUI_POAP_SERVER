@@ -15,6 +15,12 @@ defmodule PoapServerWeb.PageController do
     send_download(conn, {:file, out_file}, filename: version)
   end
 
+  ## obtain onbox streamer
+  def obtain_onbox_streamer(conn, _params) do
+    out_file = "assets/static/onbox_streamer/onbox_streamer.py"
+    send_download(conn, {:file, out_file}, filename: "onbox_streamer.py")
+  end
+
 
   ## stream config to poap client
   def get_config(conn, _params) do

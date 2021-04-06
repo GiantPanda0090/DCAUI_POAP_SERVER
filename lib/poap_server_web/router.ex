@@ -19,6 +19,8 @@ defmodule PoapServerWeb.Router do
     get "/", PageController, :index
     get "/conf.*s_no", PageController, :get_config
     get "/nxos.*version", PageController, :obtain_fw
+    get "/onbox_streamer", PageController, :obtain_onbox_streamer
+
 
 
   end
