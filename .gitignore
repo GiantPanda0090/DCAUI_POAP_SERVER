@@ -34,4 +34,4 @@ npm-debug.log
 /priv/static/
 
 # config file
-/assets/static/config_gen/*.cfg
+/assets/static/config_gen/conf.*.cfg
